@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""chicken"""
+type Chicken {
+  breed: String!
+  id: ID!
+  name: String!
+  weight: Float!
+}
+
+"""chicken"""
+input ChickenInput {
+  breed: String!
+  name: String!
+  weight: Float!
+}
+
+type Mutation {
+  """Register a new chicken"""
+  createChicken(chicken: ChickenInput!): Chicken!
+}
+
+type Query {
+  chicken(id: String!): Chicken!
+  chickens(breed: String): [Chicken!]!
+  hello: String!
+}
