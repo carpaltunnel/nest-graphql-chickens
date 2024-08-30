@@ -3,6 +3,7 @@
 [NestJS CLI Guide](https://docs.nestjs.com/cli/usages)
 
 ## Creating a New Project
+Manually creating each component :
 ```
 npm i -g @nestjs/cli
 nest new your-project-name
@@ -17,6 +18,13 @@ nest generate service chickens
 
 nest start
 ```
+
+An alternative (and generally easier) route is to use the Nest CLI with the `resource` type.  This will create the Module, Resolver, Service and link them all together automatically :
+```
+nest generate resource chickens
+```
+
+This will not generate a model/repository (see "Repositories" below) so some modification is required.  But, it's a nice time saver.
 
 ## Interacting with GraphQL
 The GraphQL Playground is enabled by default at `http://127.0.0.1:3000/graphql`
