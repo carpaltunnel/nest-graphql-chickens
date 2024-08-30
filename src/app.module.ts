@@ -2,8 +2,7 @@ import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { ChickensResolver } from './chickens/chickens.resolver';
-import { HelloResolver } from './hello/hello.resolver';
+import { ChickensModule } from './chickens/chickens.module';
 
 @Module({
   imports: [
@@ -12,7 +11,8 @@ import { HelloResolver } from './hello/hello.resolver';
       autoSchemaFile: join(process.cwd(), 'schema.gql'),
       sortSchema: true,
     }),
+    ChickensModule,
   ],
-  providers: [ChickensResolver, HelloResolver],
+  providers: [],
 })
 export class AppModule {}

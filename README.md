@@ -21,6 +21,7 @@
 
 ## Getting Started
 
+
 ## Schema
 Using the "code first" approach, the [schema.gql](./schema.gql) is automatically generated from the annotations (decorators) in our Typescript.
 
@@ -59,6 +60,19 @@ query Chicken {
         breed
         weight
     }
+}
+```
+
+Create a new chicken (mutation) : 
+```graphql
+mutation CreateChicken {
+  createChicken(chicken: {
+    name: "Big Bird"
+    weight: 10
+    breed: "India Gigante"
+  }) {
+    id
+  }
 }
 ```
 

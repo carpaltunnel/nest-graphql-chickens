@@ -25,5 +25,4 @@ type Mutation {
 type Query {
   chicken(id: String!): Chicken!
   chickens(breed: String): [Chicken!]!
-  hello: String!
 }
