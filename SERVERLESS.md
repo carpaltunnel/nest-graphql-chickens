@@ -25,4 +25,6 @@ npx serverless offline
 
 ** IMPORTANT ** : `127.0.0.1` is no longer valid (Node v20, NestJS, Serverless-Offline) so you must use `localhost` (which Postman auto-converts to `127.0.0.1` and then fails) or the IPv6 equivalent `::1`.  IPv6 addresses in URLs must be wrapped in square brackets like : `http://[::1]:3001/`
 
-The GraphQL route we've configured is therefore accessed by : `http://[::1]:3001/graphql`
+** Note ** : Serverless also prepends in the "stage" (default `dev`) to the URL path unless it is explicitly disabled.
+
+With all that in mind, the GraphQL route we've configured is accessed by : `http://[::1]:3001/dev/graphql`
