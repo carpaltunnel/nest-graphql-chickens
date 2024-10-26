@@ -1,5 +1,5 @@
 ## TODO : 
-1. Proper empty/not found responses
+1. ~~Proper empty/not found responses~~
 2. Validation
 3. Multiple resolvers
 4. Multi-level resolution
