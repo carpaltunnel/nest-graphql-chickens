@@ -1,0 +1,41 @@
+service: nest-graphql-chickens
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  architecture: arm64
+  memorySize: 1024
+  timeout: 15
+  region: us-east-1
+  logRetentionInDays: 5
+
+functions:
+  main:
+    handler: dist/main.handler
+    environment:
+      NODE_ENV: dev
+      # https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/node-reusing-connections.html
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
+
+
+# package:
+#   exclude:
+#     - './**'
+#   include:
+#     - 'dist/**' # only package the webpack 'dist' folder
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+    httpPort: 3001
+
