@@ -13,4 +13,7 @@ export class Chicken {
 
   @Field()
   breed: string;
+
+  @Field()
+  healthyWeight?: boolean;
 }

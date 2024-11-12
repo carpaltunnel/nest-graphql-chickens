@@ -5,6 +5,7 @@
 """chicken"""
 type Chicken {
   breed: String!
+  healthyWeight: Boolean!
   id: ID!
   name: String!
   weight: Float!

@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Parent, Query, Resolver, ResolveField } from '@nestjs/graphql';
 import { v4 as uuid } from 'uuid';
 import { Chicken } from './schemas/chicken.js';
 import CHICKENS from './mock-data/chicken-mock.js';
@@ -6,7 +6,7 @@ import { ChickenInput } from './schemas/chicken-input.js';
 import { ChickensService } from './chickens.service.js';
 import { NotFoundException } from '@nestjs/common';
 
-@Resolver(() => [Chicken])
+@Resolver(() => Chicken)
 export class ChickensResolver {
 
   constructor(private chickenService: ChickensService){}
@@ -41,6 +41,16 @@ export class ChickensResolver {
     }
     
     return chicken;
+  }
+
+  /**
+   * Use a field resolver to resolve field per chicken with separate logic
+   * @param {Chicken} chicken - parent object
+   * @returns {boolean}
+   */
+  @ResolveField(() => Boolean)
+  async healthyWeight(@Parent() chicken: Chicken): Promise<boolean> {
+    return chicken.weight > 1.7;
   }
 
   /**
