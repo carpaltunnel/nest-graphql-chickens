@@ -28,7 +28,8 @@ functions:
           path: '{proxy+}'
 
 
-# package:
+package:
+  excludeDevDependencies: true
 #   exclude:
 #     - './**'
 #   include:
